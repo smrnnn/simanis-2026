@@ -25,6 +25,9 @@ class SiswaPanelProvider extends PanelProvider
         return $panel
             ->id('siswa')
             ->path('siswa')
+            ->spa()
+            ->login(false)
+            ->passwordReset()
             ->colors([
                 'primary' => Color::Amber,
             ])
