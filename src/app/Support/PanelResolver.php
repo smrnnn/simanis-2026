@@ -46,18 +46,23 @@ class PanelResolver
 
     /**
      * Check whether a user is allowed to access a given Filament panel.
+     * super_admin can access all panels.
      */
     public static function canAccess(User $user, string $panelId): bool
     {
+        if (static::roleOf($user) === 'super_admin') {
+            return true;
+        }
+
         return (static::$panelIds[static::roleOf($user)] ?? null) === $panelId;
     }
 
     /**
-     * Resolve redirect URL for a given user based on their role.
+     * Resolve redirect URL after login — always goes to dashboard first.
      */
     public static function redirectUrl(User $user): string
     {
-        return static::$map[static::roleOf($user)] ?? '/';
+        return route('dashboard');
     }
 
     /**

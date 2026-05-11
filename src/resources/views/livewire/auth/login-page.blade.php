@@ -3,7 +3,8 @@
 
     {{-- Decorative blobs --}}
     <div class="absolute top-0 left-0 w-96 h-96 rounded-full opacity-20"
-         style="background: radial-gradient(circle, #60a5fa, transparent); transform: translate(-30%, -30%)"></div>
+         style="background: radial-gradient(circle, #60a5fa, transparent); transform: tran
+         ate(-30%, -30%)"></div>
     <div class="absolute bottom-0 right-0 w-80 h-80 rounded-full opacity-20"
          style="background: radial-gradient(circle, #93c5fd, transparent); transform: translate(30%, 30%)"></div>
     <div class="absolute top-1/2 left-1/4 w-64 h-64 rounded-full opacity-10"

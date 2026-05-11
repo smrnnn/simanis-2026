@@ -19,11 +19,23 @@ class OrtuResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $navigationGroup = 'Akademik';
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('email')
+                    ->email()
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('phone')
+                    ->tel()
+                    ->maxLength(255)
+                    ->default(null),
             ]);
     }
 
@@ -31,7 +43,20 @@ class OrtuResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('phone')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

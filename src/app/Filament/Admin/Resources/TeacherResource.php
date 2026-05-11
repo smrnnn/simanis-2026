@@ -18,12 +18,17 @@ class TeacherResource extends Resource
     protected static ?string $model = Teacher::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $navigationGroup = 'Akademik';
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('nip')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -31,7 +36,18 @@ class TeacherResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nip')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('updated_at')
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
